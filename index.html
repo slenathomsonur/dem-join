@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dem Join - Sign in</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #202124;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 20px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #1a73e8;
+        }
+        
+        .subtitle {
+            color: #202124;
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        
+        .instruction {
+            color: #5f6368;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #5f6368;
+            font-size: 14px;
+        }
+        
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.2s;
+        }
+        
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="text"]:focus {
+            border: 1px solid #1a73e8;
+            outline: none;
+        }
+        
+        .forgot-email {
+            color: #1a73e8;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .not-your-computer {
+            color: #5f6368;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .guest-mode {
+            color: #5f6368;
+            font-size: 14px;
+            margin: 30px 0;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .create-account {
+            color: #1a73e8;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .next-button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .next-button:hover {
+            background-color: #1565c0;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer select {
+            padding: 6px 10px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            color: #5f6368;
+            font-size: 12px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #dadce0;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #5f6368;
+            font-size: 14px;
+            flex: 1;
+        }
+        
+        .tab.active {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+            font-weight: 500;
+        }
+        
+        .form-container {
+            display: none;
+        }
+        
+        .form-container.active {
+            display: block;
+        }
+        
+        .password-field {
+            position: relative;
+        }
+        
+        .show-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #1a73e8;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: #5f6368;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dadce0;
+        }
+        
+        .divider span {
+            padding: 0 10px;
+            font-size: 14px;
+        }
+        
+        .signup-button {
+            background-color: white;
+            color: #1a73e8;
+            border: 1px solid #dadce0;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .signup-button:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Dem Join</h1>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="showForm('signin')">Sign in</div>
+            <div class="tab" onclick="showForm('signup')">Create account</div>
+        </div>
+        
+        <div id="signin-form" class="form-container active">
+            <h2 class="subtitle">Sign in</h2>
+            <p class="instruction">Use your Dem Join Account</p>
+            
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email or phone">
+            </div>
+            
+            <a href="#" class="forgot-email">Forgot email?</a>
+            
+            <p class="not-your-computer">Not your computer? Use Guest mode to sign in privately.</p>
+            
+            <div class="guest-mode">
+                <a href="#" class="forgot-email">Learn more about using Guest mode</a>
+            </div>
+            
+            <div class="buttons">
+                <a href="#" class="create-account" onclick="showForm('signup'); return false;">Create account</a>
+                <button class="next-button">Next</button>
+            </div>
+        </div>
+        
+        <div id="signup-form" class="form-container">
+            <h2 class="subtitle">Create your Dem Join Account</h2>
+            <p class="instruction">Get started with your free account</p>
+            
+            <div class="form-group">
+                <input type="text" id="name" placeholder="First and last name">
+            </div>
+            
+            <div class="form-group">
+                <input type="email" id="new-email" placeholder="Email address">
+            </div>
+            
+            <div class="form-group">
+                <div class="password-field">
+                    <input type="password" id="new-password" placeholder="Password">
+                    <button class="show-password" type="button">Show</button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="password-field">
+                    <input type="password" id="confirm-password" placeholder="Confirm">
+                    <button class="show-password" type="button">Show</button>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <a href="#" class="create-account" onclick="showForm('signin'); return false;">Sign in instead</a>
+                <button class="next-button">Next</button>
+            </div>
+        </div>
+        
+        <div class="divider">
+            <span>or</span>
+        </div>
+        
+        <button class="signup-button" onclick="redirectToGoogle()">Sign up with Google</button>
+        
+        <div class="footer">
+            <select>
+                <option>English (United States)</option>
+                <option>Español</option>
+                <option>Français</option>
+            </select>
+            
+            <div class="footer-links">
+                <a href="#">Help</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showForm(formType) {
+            // Hide all forms
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show the selected form and activate its tab
+            if (formType === 'signin') {
+                document.getElementById('signin-form').classList.add('active');
+                document.querySelectorAll('.tab')[0].classList.add('active');
+            } else {
+                document.getElementById('signup-form').classList.add('active');
+                document.querySelectorAll('.tab')[1].classList.add('active');
+            }
+        }
+        
+        function redirectToGoogle() {
+            window.location.href = 'https://www.google.com';
+        }
+        
+        // Add show/hide password functionality
+        document.querySelectorAll('.show-password').forEach(button => {
+            button.addEventListener('mousedown', function() {
+                this.previousElementSibling.type = 'text';
+                this.textContent = 'Hide';
+            });
+            
+            button.addEventListener('mouseup', function() {
+                this.previousElementSibling.type = 'password';
+                this.textContent = 'Show';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.previousElementSibling.type = 'password';
+                this.textContent = 'Show';
+            });
+        });
+    </script>
+</body>
+</html>
